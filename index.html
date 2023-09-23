@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>GS</title>
+    <title>Handouts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,10 +14,7 @@
 <div class="container flex-grow-1 light-style container-p-y">
     <div class="container-m-nx container-m-ny bg-lightest mb-3">
         <ol class="breadcrumb text-big container-p-x py-3 m-0">
-            <li class="breadcrumb-item">
-                <a href="../">home</a>
-            </li>
-            <li class="breadcrumb-item active">GS</li>
+            <li class="breadcrumb-item active">Handouts</li>
         </ol>
 
         <hr class="m-0" />
@@ -26,11 +23,12 @@
             <div>
                 <div class="btn-group mr-2">
                     <button type="button" class="btn btn-default md-btn-flat dropdown-toggle px-2" data-toggle="dropdown"><i class="ion ion-ios-settings"></i></button>
-                    <!-- <div class="dropdown-menu">
-                        <a class="dropdown-item" href="javascript:void(0)">Move</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="javascript:makeHrefToPDFjs()">Open with PDFjs</a>
+                        <!-- <a class="dropdown-item" href="javascript:void(0)">Move</a>
                         <a class="dropdown-item" href="javascript:void(0)">Copy</a>
-                        <a class="dropdown-item" href="javascript:void(0)">Remove</a>
-                    </div> -->
+                        <a class="dropdown-item" href="javascript:void(0)">Remove</a> -->
+                    </div>
                 </div>
             </div>
             <div>
@@ -78,6 +76,12 @@
                     <a class="dropdown-item" href="Additional%20Sciences.pdf" download>Download</a>
                 </div>
             </div>
+            <!-- <div class="file-item-actions btn-group">
+                <button type="button" class="btn btn-default btn-sm rounded-pill icon-btn borderless md-btn-flat hide-arrow dropdown-toggle" data-toggle="dropdown"><i class="ion ion-ios-more"></i></button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="https://gharishkumar.github.io/home/pdfjs/web/viewer.html?path=https://gharishkumar.github.io/handouts/Additional%20Sciences.pdf">Open</a>
+                </div>
+            </div> -->
         </div>
         <div class="file-item">
             <a href="Ancient%20Medieval%20and%20Culture.pdf" class="file-item-name">
@@ -730,6 +734,15 @@ function columnLayout() {
     var ico = document.getElementsByClassName('file-item-icon');
     for(var j=0; j<ico.length;j++){
         ico[j].style.display = 'block';
+    }
+}
+
+function makeHrefToPDFjs() {
+    // document.getElementsByClassName('file-item-name')[0].href.split("/").pop()
+    elementsList = document.getElementsByClassName('file-item-name')
+
+    for(i = 0; i<elementsList.length; i++) {
+        document.getElementsByClassName('file-item-name')[0].href = 'https://gharishkumar.github.io/home/pdfjs/web/viewer.html?path=https://gharishkumar.github.io/handouts/' + document.getElementsByClassName('file-item-name')[0].href.split("/").pop()
     }
 }
 </script>

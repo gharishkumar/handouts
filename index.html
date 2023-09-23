@@ -739,12 +739,28 @@ function columnLayout() {
 
 function makeHrefToPDFjs() {
     // document.getElementsByClassName('file-item-name')[0].href.split("/").pop()
+    elementsList = document.getElementsByClassName('file-item-name');
+
+    for(i = 0; i < elementsList.length; i++) {
+        document.getElementsByClassName('file-item-name')[i].href = 'https://gharishkumar.github.io/home/pdfjs/web/viewer.html?path=https://gharishkumar.github.io/handouts/' + document.getElementsByClassName('file-item-name')[i].href.split("/").pop();
+    }
+    localStorage.setItem("PDFjs", "1");
+    document.getElementsByClassName('dropdown-item')[0].href = 'javascript:makeHrefToDefault()';
+    document.getElementsByClassName('dropdown-item')[0].innerHTML = 'Open with default';
+}
+
+function makeHrefToDefault() {
+    // document.getElementsByClassName('file-item-name')[0].href.split("/").pop()
     elementsList = document.getElementsByClassName('file-item-name')
 
-    for(i = 0; i<elementsList.length; i++) {
-        document.getElementsByClassName('file-item-name')[0].href = 'https://gharishkumar.github.io/home/pdfjs/web/viewer.html?path=https://gharishkumar.github.io/handouts/' + document.getElementsByClassName('file-item-name')[0].href.split("/").pop()
+    for(i = 0; i < elementsList.length; i++) {
+        document.getElementsByClassName('file-item-name')[i].href = document.getElementsByClassName('file-item-name')[i].href.split("/").pop()
     }
+    localStorage.setItem("PDFjs", "0");
+    document.getElementsByClassName('dropdown-item')[0].href = 'javascript:makeHrefToPDFjs()';
+    document.getElementsByClassName('dropdown-item')[0].innerHTML = 'Open with PDFjs';
 }
+if(localStorage.getItem("PDFjs") == '1') {makeHrefToPDFjs()}
 </script>
 </body>
 </html>
